@@ -2,9 +2,13 @@
 
 # line-bot
 
-🔔 LINE bot plugin for Home Assistant
+LINE bot plugin for Home Assistant
 
 This project is modified from [yun-s-oh/Homeassistant](https://github.com/yun-s-oh/Homeassistant)
+
+⚠ This component is for LINE bot
+
+If you plan to integrate LINE Notify, use yun-s-oh's component instead
 
 ## Usage
 
