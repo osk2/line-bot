@@ -39,6 +39,8 @@ data:
     {"type": "text","text": "Hello, world"}
 ```
 
+See [Additional Information](#additional-information) for detail of LINE Message Object
+
 
 ## Additional Information
 
@@ -81,6 +83,49 @@ Visit `https://developers.line.biz/console/channel/<YOUR CHANNEL ID>/messaging-a
 
 The token is listed under `Channel access token` or your can create one there
 ![image](./assets/line-access-token.png)
+
+### LINE Message Object
+
+This component supports all kinds of message types that are listed in [Messaging API reference](https://developers.line.biz/en/reference/messaging-api/#message-objects)
+
+Text message example
+
+```json
+{
+  "type": "text",
+  "text": "Hello, world"
+}
+```
+
+Flex message example
+
+```json
+{
+  "type": "flex",
+  "altText": "this is a flex message",
+  "contents": {
+    "type": "bubble",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "hello"
+        },
+        {
+          "type": "text",
+          "text": "world"
+        }
+      ]
+    }
+  }
+}
+```
+
+#### See Also
+
+[Flex Message Simulator](https://developers.line.biz/flex-simulator/) to help you build flex message object
 
 ## License
 
