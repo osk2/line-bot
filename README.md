@@ -15,7 +15,7 @@ Add following entry in your `configuration.yaml`
 notify:
   - name: line_bot
     platform: line-bot
-    client_id: 'CLIENT_ID' # user ID or group ID
+    client_id: 'CLIENT_ID'
     access_token: 'CHANNEL_ACCESS_TOKEN'  
 
 ```
