@@ -1,4 +1,4 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
 
 # line-bot
 
@@ -6,11 +6,15 @@ LINE bot plugin for Home Assistant
 
 This project is modified from [yun-s-oh/Homeassistant](https://github.com/yun-s-oh/Homeassistant)
 
-⚠ This component is for LINE bot
+## ⚠ Note
+
+This component is for LINE bot
 
 If you plan to integrate LINE Notify, use yun-s-oh's component instead
 
 ## Usage
+
+### Configuration
 
 Add following entry in your `configuration.yaml`
 
@@ -24,13 +28,24 @@ notify:
 
 ```
 
-`client_id` can be one of LINE user ID or group ID
+See [Additional Information](#additional-information) for detail of retrieving `client_id` and `access_token`
 
-`access_token` is channel access token that can be generate from LINE Developer website
+### Call Service
+
+```yaml
+service: notify.line_bot
+data:
+  message: >-
+    {"type": "text","text": "Hello, world"}
+```
+
 
 ## Additional Information
 
 ### client_id
+
+> `client_id` is LINE user ID or group ID
+
 Retrieve `client_id` can be tricky, here's how I get `client_id`
 
 1. Create Firebase [Cloud Functions](https://console.firebase.google.com/)
@@ -59,7 +74,10 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
 
 ### access_token
-For `access_token`, visit `https://developers.line.biz/console/channel/<YOUR CHANNEL ID>/messaging-api`.
+
+> `access_token` is channel access token which can be generate from LINE Developer website
+
+Visit `https://developers.line.biz/console/channel/<YOUR CHANNEL ID>/messaging-api`
 
 The token is listed under `Channel access token` or your can create one there
 ![image](./assets/line-access-token.png)
