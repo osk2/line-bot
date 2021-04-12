@@ -68,10 +68,10 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 ```
 
 3. Enable webhook for LINE Messaging API
-![image](./assets/messaging-api-webhook.png)
+![image](https://github.com/osk2/line-bot/blob/master/assets/messaging-api-webhook.png)
 4. Friend bot account or invite bot to your group chat
 5. You should be able to see `client_id` in Cloud Functions log after sending some nice message to your bot
-![image](./assets/cloud-functions-log.png)
+![image](https://github.com/osk2/line-bot/blob/master//assets/cloud-functions-log.png)
 6. Disable webhook again or your log will be flooded
 
 
@@ -82,7 +82,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 Visit `https://developers.line.biz/console/channel/<YOUR CHANNEL ID>/messaging-api`
 
 The token is listed under `Channel access token` or your can create one there
-![image](./assets/line-access-token.png)
+![image](https://github.com/osk2/line-bot/blob/master//assets/line-access-token.png)
 
 ### LINE Message Object
 
