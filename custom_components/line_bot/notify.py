@@ -3,7 +3,7 @@ Example configuration.yaml entry:
 
 notify:
   - name: line_bot
-    platform: line-bot
+    platform: line_bot
     client_id: 'YOUR_CLIENT_ID'
     access_token: 'YOUR_ACCESS_TOKEN'    
 

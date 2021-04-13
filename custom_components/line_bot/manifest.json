@@ -1,7 +1,7 @@
 {
   "domain": "line_bot",
   "name": "LINE Bot",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "documentation": "https://github.com/osk2/line-bot",
   "issue_tracker": "https://github.com/osk2/line-bot/issues",
   "dependencies": [],
