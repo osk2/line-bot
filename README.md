@@ -22,7 +22,7 @@ Add following entry in your `configuration.yaml`
 
 notify:
   - name: line_bot
-    platform: line-bot
+    platform: line_bot
     client_id: 'CLIENT_ID'
     access_token: 'CHANNEL_ACCESS_TOKEN'  
 
