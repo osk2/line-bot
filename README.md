@@ -1,5 +1,3 @@
-
-
 # line-bot [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
 
 LINE bot plugin for Home Assistant
@@ -14,16 +12,21 @@ If you plan to integrate LINE Notify, use yun-s-oh's component instead
 
 ## Usage
 
+## Installation
 
-## Install
+### via HACS
 
-You can install component with [HACS](https://hacs.xyz/) custom repo: HACS > Integrations > 3 dots (upper top corner) > Custom repositories > URL: `osk2/line-bot` > Category: Integration
+Install `line-bot` via [HACS](https://hacs.xyz/) is recommended
 
-Or manually copy `line-bot` folder to `custom_components` folder in your config folder.
+HACS > Integrations > 3 dots menu (top right) > Custom repositories > URL: `osk2/line-bot` > Category: Integration
+
+### Manually
+
+Copy `custom_components/line_bot` to `custom_components`
 
 ### Configuration
 
-Add following entry as default one in your `configuration.yaml`
+Add following entry in `configuration.yaml`
 
 ```yaml
 notify:
@@ -32,52 +35,51 @@ notify:
     client_id: 'CLIENT_ID'
     access_token: 'CHANNEL_ACCESS_TOKEN'
 ```
-Then restart HA.
-
-After enable servide notify.line-bot, you can use integration to add another client_id and access_token without restart HA.
-
-1. With GUI. Configuration > Integration > Add Integration > LINE Bot
-   1. If the integration didn't show up in the list please REFRESH the page
-   2. If the integration is still not in the list, you need to clear the browser cache.
-2. Enter name (use different name to default one), client_id and access_token.
 
 See [Additional Information](#additional-information) for detail of retrieving `client_id` and `access_token`
 
-### Call Service
-There are several formats you can use to send message.
+#### Add more profile via UI
 
-1. The messsag is plain text
-```yaml
-service: notify.line_bot
-data:
-  message: "Hello, world"
-```
-2. The message is a simple dictionary
-```yaml
-service: notify.line_bot
-data:
-  message: >-
-    {"type": "text", "text": "Hello, world"}
-```
-3. The message is a full dictionary
+A profile means a set of client_id and access_token.
+
+You can add more notify service by repeating above steps. You can also create profile via UI to simplify the process
+
+1. Configuration > Integration > Add Integration > LINE Bot
+2. Enter profile name (different to entry name in configuration.yaml), client_id and access_token.
+
+See [Change Profile](#change-profile) to learn how to use profile
+
+### Usage
+
+Passing LINE message object into service
+
 ```yaml
 service: notify.line_bot
 data:
   message: >-
     {"messages":[{"type": "text", "text": "Hello, world"}]
 ```
-4. Specify the LINE bot name
+
+Just in case you are too lazy to pass full object, plain text is also supported
+
+```yaml
+service: notify.line_bot
+data:
+  message: 'Hello, world'
+```
+
+#### Change profile
+
 ```yaml
 service: notify.line_bot
 data:
   message: >-
     {"messages":[{"type": "text", "text": "Hello, world"}]
   data:
-    name: line_bot_family
+    profile: cool_line_bot # Profile name
 ```
 
 See [Additional Information](#additional-information) for detail of LINE Message Object
-
 
 ## Additional Information
 
@@ -91,26 +93,25 @@ Retrieve `client_id` can be tricky, here's how I get `client_id`
 2. Deploy following script to Cloud Functions
 
 ```js
-const functions = require('firebase-functions');
+const functions = require('firebase-functions')
 
 exports.helloWorld = functions.https.onRequest((request, response) => {
   const events = request.body.events
-  const source = events.length > 0 ? events[0].source : null;
+  const source = events.length > 0 ? events[0].source : null
 
   if (source) {
-    functions.logger.info(source.groupId || source.userId);
+    functions.logger.info(source.groupId || source.userId)
   }
-  response.send("Hello from Firebase!");
-});
+  response.send('Hello from Firebase!')
+})
 ```
 
 3. Enable webhook for LINE Messaging API
-![image](https://github.com/osk2/line-bot/blob/master/assets/messaging-api-webhook.png)
+   ![image](https://github.com/osk2/line-bot/blob/master/assets/messaging-api-webhook.png)
 4. Friend bot account or invite bot to your group chat
 5. You should be able to see `client_id` in Cloud Functions log after sending some nice message to your bot
-![image](https://github.com/osk2/line-bot/blob/master//assets/cloud-functions-log.png)
+   ![image](https://github.com/osk2/line-bot/blob/master//assets/cloud-functions-log.png)
 6. Disable webhook again or your log will be flooded
-
 
 ### access_token
 
@@ -129,9 +130,12 @@ Text message example
 
 ```json
 {
-  "messages": [{
-    "type": "text",
-    "text": "Hello, world"}]
+  "messages": [
+    {
+      "type": "text",
+      "text": "Hello, world"
+    }
+  ]
 }
 ```
 
@@ -163,11 +167,8 @@ Flex message example
 
 #### See Also
 
-[Flex Message Simulator](https://developers.line.biz/flex-simulator/) to help you build flex message object
-
-
-### One More Information
-The good document to use ['LINE Bot'](https://www.dcard.tw/f/smart_home/p/235787775) which is from [Jason Lee](https://www.dcard.tw/@jas0n.1ee.com).
+1. [Flex Message Simulator](https://developers.line.biz/flex-simulator/) to help you build flex message object
+2. [#教學 打造你的智慧家庭吧! 把 LINE 提醒變得更有型](https://www.dcard.tw/f/smart_home/p/235787775) (Thanks [Jason Lee](https://www.dcard.tw/@jas0n.1ee.com) 👏)
 
 ## License
 
