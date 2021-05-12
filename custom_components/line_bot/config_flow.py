@@ -8,7 +8,7 @@ from homeassistant.config_entries import (
     ConfigFlow,
     OptionsFlow,
     ConfigEntry
-    )
+)
 from homeassistant.const import CONF_NAME, CONF_CLIENT_ID, CONF_ACCESS_TOKEN
 from homeassistant.core import callback
 from homeassistant.helpers.typing import ConfigType
@@ -85,7 +85,7 @@ class LineBotFlowHandler(ConfigFlow, domain=DOMAIN):
     @callback
     def _async_get_entry(self):
         return self.async_create_entry(
-            title=self._name,
+            title=f"Profile: {self._name}",
             data={
                 CONF_NAME: self._name,
                 CONF_CLIENT_ID: self._client_id,

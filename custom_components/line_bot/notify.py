@@ -56,7 +56,7 @@ class LineNotificationService(BaseNotificationService):
         """Send some message."""
         name = None
         if kwargs.get("data"):
-            name = kwargs["data"].get("name", self._line_bot[CONF_NAME])
+            name = kwargs["data"].get("profile", self._line_bot[CONF_NAME])
         client_id = self._line_bot[CONF_CLIENT_ID]
         access_token = self._line_bot[CONF_ACCESS_TOKEN]
 
