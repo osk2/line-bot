@@ -1,4 +1,8 @@
-# line-bot [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
+# line-bot
+
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
+
+[繁體中文](README-zh.md) | [English](README.md)
 
 LINE bot plugin for Home Assistant
 
@@ -9,8 +13,6 @@ This project is modified from [yun-s-oh/Homeassistant](https://github.com/yun-s-
 This component is for LINE bot
 
 If you plan to integrate LINE Notify, use yun-s-oh's component instead
-
-## Usage
 
 ## Installation
 
@@ -24,7 +26,7 @@ HACS > Integrations > 3 dots menu (top right) > Custom repositories > URL: `osk2
 
 Copy `custom_components/line_bot` to `custom_components`
 
-### Configuration
+## Configuration
 
 Add following entry in `configuration.yaml`
 
@@ -38,9 +40,9 @@ notify:
 
 See [Additional Information](#additional-information) for detail of retrieving `client_id` and `access_token`
 
-#### Add more profile via UI
+### Add more profile via UI
 
-A profile means a set of client_id and access_token.
+A profile means a set of `client_id` and `access_token`.
 
 You can add more notify service by repeating above steps. You can also create profile via UI to simplify the process
 
@@ -49,7 +51,7 @@ You can add more notify service by repeating above steps. You can also create pr
 
 See [Change Profile](#change-profile) to learn how to use profile
 
-### Usage
+## Usage
 
 Passing LINE message object into service
 
@@ -68,7 +70,7 @@ data:
   message: 'Hello, world'
 ```
 
-#### Change profile
+### Change profile
 
 ```yaml
 service: notify.line_bot
@@ -165,7 +167,7 @@ Flex message example
 }
 ```
 
-#### See Also
+## See Also
 
 1. [Flex Message Simulator](https://developers.line.biz/flex-simulator/) to help you build flex message object
 2. [#教學 打造你的智慧家庭吧! 把 LINE 提醒變得更有型](https://www.dcard.tw/f/smart_home/p/235787775) (Thanks [Jason Lee](https://www.dcard.tw/@jas0n.1ee.com) 👏)
