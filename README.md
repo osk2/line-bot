@@ -14,29 +14,66 @@ If you plan to integrate LINE Notify, use yun-s-oh's component instead
 
 ## Usage
 
+
+## Install
+
+You can install component with [HACS](https://hacs.xyz/) custom repo: HACS > Integrations > 3 dots (upper top corner) > Custom repositories > URL: `osk2/line-bot` > Category: Integration
+
+Or manually copy `line-bot` folder to `custom_components` folder in your config folder.
+
 ### Configuration
 
-Add following entry in your `configuration.yaml`
+Add following entry as default one in your `configuration.yaml`
 
 ```yaml
-
 notify:
   - name: line_bot
     platform: line_bot
     client_id: 'CLIENT_ID'
-    access_token: 'CHANNEL_ACCESS_TOKEN'  
-
+    access_token: 'CHANNEL_ACCESS_TOKEN'
 ```
+Then restart HA.
+
+After enable servide notify.line-bot, you can use integration to add another client_id and access_token without restart HA.
+
+1. With GUI. Configuration > Integration > Add Integration > LINE Bot
+   1. If the integration didn't show up in the list please REFRESH the page
+   2. If the integration is still not in the list, you need to clear the browser cache.
+2. Enter name (use different name to default one), client_id and access_token.
 
 See [Additional Information](#additional-information) for detail of retrieving `client_id` and `access_token`
 
 ### Call Service
+There are several formats you can use to send message.
 
+1. The messsag is plain text
+```yaml
+service: notify.line_bot
+data:
+  message: "Hello, world"
+```
+2. The message is a simple dictionary
 ```yaml
 service: notify.line_bot
 data:
   message: >-
-    {"type": "text","text": "Hello, world"}
+    {"type": "text", "text": "Hello, world"}
+```
+3. The message is a full dictionary
+```yaml
+service: notify.line_bot
+data:
+  message: >-
+    {"messages":[{"type": "text", "text": "Hello, world"}]
+```
+4. Specify the LINE bot name
+```yaml
+service: notify.line_bot
+data:
+  message: >-
+    {"messages":[{"type": "text", "text": "Hello, world"}]
+  data:
+    name: line_bot_family
 ```
 
 See [Additional Information](#additional-information) for detail of LINE Message Object
@@ -92,8 +129,9 @@ Text message example
 
 ```json
 {
-  "type": "text",
-  "text": "Hello, world"
+  "messages": [{
+    "type": "text",
+    "text": "Hello, world"}]
 }
 ```
 
@@ -126,6 +164,10 @@ Flex message example
 #### See Also
 
 [Flex Message Simulator](https://developers.line.biz/flex-simulator/) to help you build flex message object
+
+
+### One More Information
+The good document to use ['LINE Bot'](https://www.dcard.tw/f/smart_home/p/235787775) which is from [Jason Lee](https://www.dcard.tw/@jas0n.1ee.com).
 
 ## License
 

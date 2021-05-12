@@ -1,0 +1,34 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Device is already configured",
+            "single_instance_allowed": "Already configured. Only a single configuration possible."
+        },
+        "error": {
+            "cannot_connect": "Failed to connect",
+            "unknown": "Unexpected error"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "name": "Name",
+                    "client_id": "Client ID",
+                    "access_token": "Access Token"
+                },
+                "flow_title": "Line Bot: {name}"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Line Bot:",
+                "data": {
+                    "name": "Name",
+                    "client_id": "Client ID",
+                    "access_token": "Access Token"
+                }
+            }
+        }
+    }
+}
