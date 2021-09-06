@@ -59,7 +59,7 @@ notify:
 service: notify.line_bot
 data:
   message: >-
-    {"messages":[{"type": "text", "text": "Hello, world"}]
+    {"messages":[{"type": "text", "text": "Hello, world"}]}
 ```
 
 若你懶得打字，沒關係，純文字也是支援的
@@ -78,7 +78,7 @@ data:
 service: notify.line_bot
 data:
   message: >-
-    {"messages":[{"type": "text", "text": "Hello, world"}]
+    {"messages":[{"type": "text", "text": "Hello, world"}]}
   data:
     profile: cool_line_bot # 設定檔名稱
 ```
