@@ -59,7 +59,7 @@ Passing LINE message object into service
 service: notify.line_bot
 data:
   message: >-
-    {"messages":[{"type": "text", "text": "Hello, world"}]
+    {"messages":[{"type": "text", "text": "Hello, world"}]}
 ```
 
 Just in case you are too lazy to pass full object, plain text is also supported
@@ -76,7 +76,7 @@ data:
 service: notify.line_bot
 data:
   message: >-
-    {"messages":[{"type": "text", "text": "Hello, world"}]
+    {"messages":[{"type": "text", "text": "Hello, world"}]}
   data:
     profile: cool_line_bot # Profile name
 ```
