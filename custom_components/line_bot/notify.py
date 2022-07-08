@@ -70,8 +70,11 @@ class LineNotificationService(BaseNotificationService):
             _LOGGER.error("Missing client_id or access_token to send message")
             return
 
-        headers = {AUTHORIZATION: "Bearer " + access_token,
-                   'Content-type': 'application/json'}
+        headers = {
+            "Authorization": "Bearer {}".format(access_token),
+            "Content-type": "application/json"
+        }
+
         try:
             payload = json.loads(message.encode('utf-8'))
         except ValueError:
